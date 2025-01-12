@@ -264,7 +264,7 @@ impl AudioTagWrite for Id3v2Tag {
         self.inner.write_to(file, id3::Version::Id3v24)?;
         Ok(())
     }
-    fn write_to_path(&mut self, path: &str) -> crate::Result<()> {
+    fn write_to_path(&mut self, path: &Path) -> crate::Result<()> {
         self.inner.write_to_path(path, id3::Version::Id3v24)?;
         Ok(())
     }

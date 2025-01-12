@@ -35,6 +35,7 @@
 //!
 //! ```rust,no_run
 //! use audiotags::{Tag, Picture, MimeType};
+//! use std::path::Path;
 //!
 //! // using `default()` or `new()` alone so that the metadata format is
 //! // guessed (from the file extension) (in this case, Id3v2 tag is read)
@@ -58,7 +59,7 @@
 //! assert!(tag.album_cover().is_none());
 //! tag.remove_album_cover();
 //!
-//! tag.write_to_path("test.mp3").expect("Fail to save");
+//! tag.write_to_path(Path::new("test.mp3")).expect("Fail to save");
 //! ```
 
 pub(crate) use audiotags_macro::*;
@@ -93,6 +94,7 @@ pub use std::convert::{TryFrom, TryInto};
 ///
 /// ```no_run
 /// use audiotags::{Tag, TagType};
+/// use std::path::Path;
 ///
 /// # fn main() -> audiotags::Result<()> {
 /// // Guess the format by default
@@ -100,7 +102,7 @@ pub use std::convert::{TryFrom, TryInto};
 /// tag.set_title("Foo");
 ///
 /// // you can convert the tag type and save the metadata to another file.
-/// tag.to_dyn_tag(TagType::Mp4).write_to_path("assets/a.m4a")?;
+/// tag.to_dyn_tag(TagType::Mp4).write_to_path(Path::new("assets/a.m4a"))?;
 ///
 /// // you can specify the tag type (but when you want to do this, also consider directly using the concrete type)
 /// let tag = Tag::new().with_tag_type(TagType::Mp4).read_from_path("assets/a.m4a").unwrap();

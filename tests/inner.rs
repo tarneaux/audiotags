@@ -1,6 +1,7 @@
 use audiotags::*;
 use id3::TagLike;
 use std::fs;
+use std::path::Path;
 use tempfile::Builder;
 
 #[test]
@@ -24,7 +25,7 @@ fn test_inner() {
     let mut id3tag = tag.to_dyn_tag(TagType::Id3v2);
 
     id3tag
-        .write_to_path(tmp_path.to_str().unwrap())
+        .write_to_path(Path::new(tmp_path.to_str().unwrap()))
         .expect("Fail to write!");
 
     let id3tag_reload = Tag::default()

@@ -320,7 +320,7 @@ impl AudioTagWrite for Mp4Tag {
         self.inner.write_to(file)?;
         Ok(())
     }
-    fn write_to_path(&mut self, path: &str) -> crate::Result<()> {
+    fn write_to_path(&mut self, path: &Path) -> crate::Result<()> {
         self.inner.write_to_path(path)?;
         Ok(())
     }
